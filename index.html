@@ -191,7 +191,28 @@ body{
     font-size:22px;
     color:#ff5f93;
     font-weight:bold;
-    animation:typing .8s forwards;
+    opacity:0;
+}
+
+
+.fade-hint{
+    display:block !important;
+    animation:fadeIn 2s forwards;
+}
+
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
 }
 
 
@@ -318,10 +339,11 @@ envelope.onclick = function(){
 
     document.getElementById("scene").style.display="none";
 
-    document.getElementById("letter").style.display="block";
+
     document.querySelectorAll(".petal").forEach(petal=>{
-    petal.style.zIndex="1";
-});
+        petal.style.zIndex="1";
+    });
+
 
     showFirstLetter();
 
@@ -351,10 +373,10 @@ line.classList.add("show");
 
 setTimeout(()=>{
 
-document.getElementById("next-hint").style.display="block";
+document.getElementById("next-hint")
+.classList.add("fade-hint");
 
 }, lines.length*1200 + 10000);
-
 
 }
 
@@ -431,7 +453,7 @@ setTimeout(()=>{
 
 line.classList.add("show");
 
-}, index*1000);
+}, index*2000);
 
 
 });
