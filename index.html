@@ -319,6 +319,9 @@ envelope.onclick = function(){
     document.getElementById("scene").style.display="none";
 
     document.getElementById("letter").style.display="block";
+    document.querySelectorAll(".petal").forEach(petal=>{
+    petal.style.zIndex="1";
+});
 
     showFirstLetter();
 
@@ -350,7 +353,7 @@ setTimeout(()=>{
 
 document.getElementById("next-hint").style.display="block";
 
-}, lines.length*1200 + 5000);
+}, lines.length*1200 + 10000);
 
 
 }
@@ -377,50 +380,64 @@ showSecondLetter();
 
 function showSecondLetter(){
 
-
 document.querySelector(".paper").innerHTML=`
 
 <h1>💗 Một chiếc thư khác 💗</h1>
 
-
-<div class="line show">
+<div class="line">
 Sinh nhật lần này của đằng ấy chưa được như em mong muốn.
 </div>
 
 
-<div class="line show">
+<div class="line">
 Ngày hôm nay mở đầu bằng việc em không tìm đc tấm thiệp chuẩn bị từ trước.
 </div>
 
 
-<div class="line show">
-Haizzz, cất công chuẩn bị mà không đưa được cho anh :< 
+<div class="line">
+Haizzz, cất công chuẩn bị mà không đưa được cho anh :<
 em sẽ kiếm lại, tìm thấy rồi em đưa anh sau nhé.
 </div>
 
 
-<div class="line show">
-Món quà em chuẩn bị cũng không thể tặng anh, 
+<div class="line">
+Món quà em chuẩn bị cũng không thể tặng anh,
 một thời gian nữa em thấy phù hợp hơn sẽ tặng anh sau nhen😉
 </div>
 
 
-<div class="line show">
-Chúc anh tuổi mới thật nhiều sức khỏe, hay ăn chóng lớn, 
-mong anh có thể quên đi những chuyện khiến anh cảm thấy buồn, thấy khó chịu.
+<div class="line">
+Chúc anh tuổi mới thật nhiều sức khỏe, hay ăn chóng lớn,
+mong anh có thể quên đi những chuyện khiến anh cảm thấy buồn,
+thấy khó chịu.
 </div>
 
 
-<div class="line show">
-Và hi vọng em có thể đón sinh nhật với anh những năm sau nữa 
+<div class="line">
+Và hi vọng em có thể đón sinh nhật với anh những năm sau nữa
 để gỡ gạc lại cho năm nay hehe 💕
 </div>
 
-
 `;
 
-}
 
+
+const newLines=document.querySelectorAll(".line");
+
+
+newLines.forEach((line,index)=>{
+
+setTimeout(()=>{
+
+line.classList.add("show");
+
+}, index*1000);
+
+
+});
+
+
+}
 </script>
 
 </body>
