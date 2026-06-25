@@ -331,13 +331,12 @@ setInterval(createPetal,250);
 
 const envelope = document.getElementById("envelope");
 
-let firstOpen = false;
-let secondLetter = false;
-
 
 envelope.onclick = function(){
 
     document.getElementById("scene").style.display="none";
+
+    document.getElementById("letter").style.display="block";
 
 
     document.querySelectorAll(".petal").forEach(petal=>{
@@ -351,17 +350,20 @@ envelope.onclick = function(){
 
 
 
+
+
 function showFirstLetter(){
 
-const lines=document.querySelectorAll(".line");
+
+const lines=document.querySelectorAll("#letter .line");
 
 
 lines.forEach((line,index)=>{
 
+
 setTimeout(()=>{
 
-line.classList.add("show");
-
+    line.classList.add("show");
 
 }, index*1200);
 
@@ -369,46 +371,79 @@ line.classList.add("show");
 });
 
 
-// sau dòng cuối 5 giây hiện lời nhắc
+
+// sau khi thư 1 hiện hết + chờ 10 giây
 
 setTimeout(()=>{
+
 
 document.getElementById("next-hint")
 .classList.add("fade-hint");
 
+
 }, lines.length*1200 + 10000);
 
-}
 
-// bấm màn hình lần 2
-
-document.getElementById("letter").onclick=function(){
-
-const hint = document.getElementById("next-hint");
-
-
-if(hint.classList.contains("fade-hint")){
-
-    showSecondLetter();
 
 }
 
-};
+
+
+
+let secondOpened=false;
+
+
+document.getElementById("letter").addEventListener("click",function(){
+
+
+
+const hint=document.getElementById("next-hint");
+
+
+
+if(
+hint.classList.contains("fade-hint")
+&& secondOpened===false
+){
+
+
+secondOpened=true;
+
+showSecondLetter();
+
+
+}
+
+
+
+});
+
+
+
+
+
+
 
 function showSecondLetter(){
 
+
 document.querySelector(".paper").innerHTML=`
 
+
 <h1>💗 Một chiếc thư khác 💗</h1>
+
+
 
 <div class="line">
 Sinh nhật lần này của đằng ấy chưa được như em mong muốn.
 </div>
 
 
+
 <div class="line">
 Ngày hôm nay mở đầu bằng việc em không tìm đc tấm thiệp chuẩn bị từ trước.
 </div>
+
 
 
 <div class="line">
@@ -417,10 +452,12 @@ em sẽ kiếm lại, tìm thấy rồi em đưa anh sau nhé.
 </div>
 
 
+
 <div class="line">
 Món quà em chuẩn bị cũng không thể tặng anh,
 một thời gian nữa em thấy phù hợp hơn sẽ tặng anh sau nhen😉
 </div>
+
 
 
 <div class="line">
@@ -430,23 +467,28 @@ thấy khó chịu.
 </div>
 
 
+
 <div class="line">
 Và hi vọng em có thể đón sinh nhật với anh những năm sau nữa
 để gỡ gạc lại cho năm nay hehe 💕
 </div>
 
+
 `;
 
 
 
-const newLines=document.querySelectorAll(".line");
+const lines=document.querySelectorAll("#letter .line");
 
 
-newLines.forEach((line,index)=>{
+
+lines.forEach((line,index)=>{
+
 
 setTimeout(()=>{
 
 line.classList.add("show");
+
 
 }, index*2000);
 
