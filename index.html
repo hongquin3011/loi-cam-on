@@ -380,25 +380,20 @@ document.getElementById("next-hint")
 
 }
 
-
-
 // bấm màn hình lần 2
 
 document.getElementById("letter").onclick=function(){
 
+const hint = document.getElementById("next-hint");
 
-if(document.getElementById("next-hint").style.display==="block"){
 
+if(hint.classList.contains("fade-hint")){
 
-showSecondLetter();
-
+    showSecondLetter();
 
 }
 
-
 };
-
-
 
 function showSecondLetter(){
 
